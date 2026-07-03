@@ -1,11 +1,15 @@
-import { Link } from 'react-router-dom';
-import { motion } from 'framer-motion';
+import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { ExternalLink, Activity, FileText } from 'lucide-react';
 import { FaGithub } from 'react-icons/fa';
+import CaseStudy from '../../pages/CaseStudy';
 
 export default function Projects() {
+  const [selectedProject, setSelectedProject] = useState(null);
+
   const projects = [
     {
+      id: 'e-commerce-platform',
       title: 'E-Commerce Platform',
       description: 'A full-featured e-commerce platform with cart management, user authentication, and Stripe payment integration. Solved the problem of slow load times by implementing SSR and image optimization.',
       image: 'https://images.unsplash.com/photo-1557821552-17105176677c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
@@ -15,22 +19,34 @@ export default function Projects() {
       caseStudyUrl: '/case-study/e-commerce-platform',
     },
     {
-      title: 'Task Management App',
-      description: 'A collaborative Kanban board application for teams. Addressed the challenge of real-time syncing across multiple clients using WebSockets and optimistic UI updates.',
-      image: 'https://images.unsplash.com/photo-1611224923853-80b023f02d71?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
-      stack: ['React', 'TypeScript', 'Firebase', 'Redux'],
+      id: 'school-management-system',
+      title: 'School Management System',
+      description: 'A comprehensive web platform for managing student records, attendance, grades, and fee collection built using PHP and MySQL. Features secure role-based portals for admins, teachers, and parents.',
+      image: 'https://images.unsplash.com/photo-1580582932707-520aed937b7b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
+      stack: ['HTML', 'CSS', 'JavaScript', 'PHP', 'MySQL'],
       liveUrl: 'https://example.com',
       githubUrl: 'https://github.com',
-      caseStudyUrl: '/case-study/task-management-app',
+      caseStudyUrl: '/case-study/school-management-system',
     },
     {
-      title: 'AI Content Generator',
-      description: 'A SaaS tool that uses OpenAI API to generate marketing copy. Built a credit system and subscription model using Stripe billing, overcoming complex state management issues.',
-      image: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
-      stack: ['React', 'Express', 'PostgreSQL', 'OpenAI API'],
+      id: 'text-steganography',
+      title: 'Text Steganography',
+      description: 'An Android application for secure data hiding, enabling users to encode secret messages within ordinary text using custom steganographic algorithms. Features interactive UI and secure client-side processing.',
+      image: '/Portfolio/steganography.png',
+      stack: ['Android', 'Java', 'XML'],
+      liveUrl: 'https://example.com',
+      githubUrl: 'https://github.com/',
+      caseStudyUrl: '/case-study/text-steganography',
+    },
+    {
+      id: 'blogify',
+      title: 'Blogify',
+      description: 'A dynamic, server-side rendered blogging platform. Users can write, publish, and manage blog posts with markdown support, secure authentication, and a responsive reading layout.',
+      image: 'https://images.unsplash.com/photo-1499750310107-5fef28a66643?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
+      stack: ['Node.js', 'Express.js', 'EJS', 'MongoDB'],
       liveUrl: 'https://example.com',
       githubUrl: 'https://github.com',
-      caseStudyUrl: '/case-study/ai-content-generator',
+      caseStudyUrl: '/case-study/blogify',
     }
   ];
 
@@ -44,7 +60,7 @@ export default function Projects() {
           transition={{ duration: 0.5 }}
           className="text-center mb-16"
         >
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">Featured Projects</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">Projects</h2>
           <div className="w-20 h-1 bg-primary-500 mx-auto rounded-full mb-8"></div>
           <p className="text-lg text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
             Here are some of my recent works. Each project presented unique challenges that helped me grow as a developer.
@@ -88,34 +104,27 @@ export default function Projects() {
                 </div>
                 
                 <div className="flex items-center gap-4 pt-4 border-t border-gray-100 dark:border-slate-700 flex-wrap">
-                  <a 
-                    href={project.liveUrl} 
-                    target="_blank" 
-                    rel="noreferrer"
-                    className="flex items-center gap-2 text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-primary-500 dark:hover:text-primary-400 transition-colors"
-                  >
-                    <ExternalLink size={16} /> Live Demo
-                  </a>
-                  <a 
-                    href={project.githubUrl} 
-                    target="_blank" 
-                    rel="noreferrer"
-                    className="flex items-center gap-2 text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-primary-500 dark:hover:text-primary-400 transition-colors"
-                  >
-                    <FaGithub size={16} /> Source Code
-                  </a>
-                  <Link 
-                    to={project.caseStudyUrl} 
-                    className="flex items-center gap-2 text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-primary-500 dark:hover:text-primary-400 transition-colors"
+                  <button 
+                    onClick={() => setSelectedProject(project.id)}
+                    className="flex items-center gap-2 text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-primary-500 dark:hover:text-primary-400 transition-colors cursor-pointer"
                   >
                     <FileText size={16} /> Case Study
-                  </Link>
+                  </button>
                 </div>
               </div>
             </motion.div>
           ))}
         </div>
       </div>
+
+      <AnimatePresence>
+        {selectedProject && (
+          <CaseStudy 
+            id={selectedProject} 
+            onClose={() => setSelectedProject(null)} 
+          />
+        )}
+      </AnimatePresence>
     </section>
   );
 }

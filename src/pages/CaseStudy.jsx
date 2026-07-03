@@ -1,11 +1,9 @@
 import React, { useEffect } from 'react';
-import { useParams, Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { ArrowLeft, ExternalLink, CheckCircle2, Target, Lightbulb, Zap } from 'lucide-react';
+import { X, ExternalLink, CheckCircle2, Target, Lightbulb, Zap } from 'lucide-react';
 import { FaGithub } from 'react-icons/fa';
 
-export default function CaseStudy() {
-  const { id } = useParams();
+export default function CaseStudy({ id, onClose }) {
 
   // Mock data for case studies
   const caseStudies = {
@@ -15,9 +13,9 @@ export default function CaseStudy() {
       heroImage: 'https://images.unsplash.com/photo-1557821552-17105176677c?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80',
       overview: 'This project involved building a scalable, full-featured e-commerce platform from the ground up. The client needed a modern storefront that could handle high traffic spikes during seasonal sales while maintaining lightning-fast page loads.',
       role: 'Lead MERN Stack Developer',
-      timeline: '3 Months',
+      timeline: '1 Month',
       liveUrl: 'https://example.com',
-      githubUrl: 'https://github.com',
+      githubUrl: 'https://github.com/',
       problem: 'The previous platform was built on legacy architecture, suffering from slow initial load times (over 4 seconds), high cart abandonment rates due to a clunky checkout process, and poor SEO indexing.',
       solution: 'I architected a new headless commerce solution using Next.js for server-side rendering (SSR), instantly solving the SEO and initial load time issues. I integrated Stripe for a seamless, 1-click checkout experience and used MongoDB for flexible product catalog management.',
       features: [
@@ -33,91 +31,118 @@ export default function CaseStudy() {
       ],
       stack: ['React', 'Next.js', 'Node.js', 'Express', 'MongoDB', 'Tailwind CSS', 'Stripe API']
     },
-    'task-management-app': {
-      title: 'Task Management App',
-      tagline: 'Real-time collaborative Kanban board for remote teams.',
-      heroImage: 'https://images.unsplash.com/photo-1611224923853-80b023f02d71?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80',
-      overview: 'A robust task management tool designed to help remote teams organize workflows. The focus was on creating a highly responsive, real-time synchronization experience similar to Trello or Asana.',
+    'school-management-system': {
+      title: 'School Management System',
+      tagline: 'Comprehensive digital administration for modern schools.',
+      heroImage: 'https://images.unsplash.com/photo-1580582932707-520aed937b7b?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80',
+      overview: 'This school management platform streamlines academic workflows and communications. It provides dedicated portals for administrators, teachers, parents, and students to track attendance, grades, announcements, and tuition payments securely.',
       role: 'Full Stack Developer',
-      timeline: '2 Months',
-      liveUrl: 'https://example.com',
-      githubUrl: 'https://github.com',
-      problem: 'Teams were struggling with data staleness. When multiple users were editing the same project board, changes required manual page refreshes, leading to conflicting edits and lost data.',
-      solution: 'I implemented a real-time WebSocket connection to broadcast board state changes instantly to all connected clients. I also utilized optimistic UI updates so users felt immediate responsiveness, resolving state conflicts via a server-side timestamp resolution strategy.',
-      features: [
-        'Real-time WebSocket synchronization across clients',
-        'Drag-and-drop Kanban board interface',
-        'Optimistic UI updates for zero-latency feel',
-        'Role-based access control (RBAC) and team workspaces',
-      ],
-      results: [
-        'Zero reported data conflicts since launch',
-        'Achieved sub-50ms perceived interaction latency',
-        'Scaled to support 1,000+ concurrent active socket connections'
-      ],
-      stack: ['React', 'TypeScript', 'Node.js', 'Socket.io', 'MongoDB', 'Redux Toolkit']
-    },
-    'ai-content-generator': {
-      title: 'AI Content Generator',
-      tagline: 'SaaS platform automating marketing copy creation.',
-      heroImage: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80',
-      overview: 'A SaaS application that leverages Large Language Models to instantly generate high-converting marketing copy, blog posts, and social media captions for digital marketers.',
-      role: 'Backend & AI Integration Lead',
       timeline: '1.5 Months',
       liveUrl: 'https://example.com',
-      githubUrl: 'https://github.com',
-      problem: 'Integrating raw AI APIs directly into the frontend posed significant security risks and did not allow for a scalable billing system based on usage (tokens).',
-      solution: 'I built a robust backend proxy service using Express that securely managed the OpenAI API keys. I implemented a complex credit-based billing system tied to Stripe webhooks, which tracked prompt token usage and dynamically deducted credits from user accounts.',
+      githubUrl: 'https://github.com/',
+      problem: 'The school relied on manual paper logs and fragmented spreadsheets, resulting in slow communication of grades, high admin overhead for fee tracking, and security vulnerabilities with student records.',
+      solution: 'I built a robust web application with separate role-based dashboards. Built a real-time notification system for announcements, automated grading reports, and integrated a payment gateway for secure fee payments.',
       features: [
-        'Secure backend proxy for LLM API requests',
-        'Usage-based token tracking and accounting',
-        'Subscription tier management via Stripe Webhooks',
-        'Rich text editor with one-click copy and export features',
+        'Secure Role-Based Access Control (RBAC)',
+        'Real-time student attendance and grade tracking',
+        'Automated fee invoicing and online receipt generation',
+        'Parent-teacher communication dashboard',
       ],
       results: [
-        'Successfully processed over 500,000 API requests in month one',
-        'Maintained 99.9% uptime for the backend proxy',
-        'Prevented API abuse through strict rate-limiting algorithms'
+        'Reduced administrative processing time by 40%',
+        'Improved grading report turnaround from 2 weeks to instantaneous',
+        'Supported over 5,000 active student and parent profiles'
       ],
-      stack: ['React', 'Express', 'Node.js', 'PostgreSQL', 'OpenAI API', 'Stripe']
+      stack: ['HTML', 'CSS', 'JavaScript', 'PHP', 'MySQL']
+    },
+    'text-steganography': {
+      title: 'Text Steganography',
+      tagline: 'Undetectable secret messaging hidden in plain text on Android.',
+      heroImage: '/Portfolio/steganography.png',
+      overview: 'An Android application designed to encrypt and conceal secret payloads inside standard decoy text. By using steganographic unicode zero-width manipulation, the hidden messages are invisible in any typical editor or communications channel.',
+      role: 'Android developer',
+      timeline: '20 Days',
+      liveUrl: 'https://example.com',
+      githubUrl: 'https://github.com/',
+      problem: 'Standard encrypted strings look suspicious and can trigger active blocks or detection by automated text filters, whereas steganography allows the data to masquerade as standard natural language.',
+      solution: 'I designed a mobile app that processes and encrypts text using AES and translates the bytes into invisible non-printable Unicode characters embedded dynamically into an Android edit text view. XML-based user experience enables quick encode/decode cycles.',
+      features: [
+        'AES encryption of hidden payload with custom passphrases',
+        'Zero-width steganographic text processing engine',
+        'Responsive XML UI layouts with copy-to-clipboard functionality',
+        'No external network requirements for local offline usage',
+      ],
+      results: [
+        'Successfully tested compatibility across multiple Android API versions',
+        'Guaranteed zero leakage of data into system logs',
+        'High performance UI with sub-10ms encode execution time'
+      ],
+      stack: ['Android', 'Java', 'XML']
+    },
+    'blogify': {
+      title: 'Blogify',
+      tagline: 'A dynamic, server-side rendered blogging application.',
+      heroImage: 'https://images.unsplash.com/photo-1499750310107-5fef28a66643?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80',
+      overview: 'Blogify is a responsive blog publishing system utilizing EJS templates for server-rendered HTML. It implements secure user authentication, interactive markdown previewing, and MongoDB for database storage.',
+      role: 'Backend & Frontend Developer',
+      timeline: '10 Days',
+      liveUrl: 'https://example.com',
+      githubUrl: 'https://github.com/',
+      problem: 'Building a fast and light dynamic content system without the heavy overhead of large client-side SPA frameworks, while still maintaining clean routing, user session state, and security.',
+      solution: 'I utilized Express with session-based authentication, Mongoose for model representations, and EJS templates for fast-loading, highly SEO-friendly server-rendered pages.',
+      features: [
+        'User authentication with session store persistence',
+        'Markdown-based post editor and parsing engine',
+        'Dynamic routing for custom author posts',
+        'Comment system and interactive community features',
+      ],
+      results: [
+        'Achieved sub-150ms page response time with server rendering',
+        'Secured session management cookies using strict HTTP-only options',
+        'Simplified editing flow with real-time markdown parsing'
+      ],
+      stack: ['Node.js', 'Express.js', 'EJS', 'MongoDB']
     }
   };
 
   const project = caseStudies[id];
 
-  // Scroll to top on mount
+  // Prevent body scroll when modal is open
   useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [id]);
+    document.body.style.overflow = 'hidden';
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, []);
 
-  if (!project) {
-    return (
-      <div className="min-h-screen flex items-center justify-center text-center px-4">
-        <div>
-          <h1 className="text-4xl font-bold mb-4">Project Not Found</h1>
-          <p className="text-gray-600 mb-8">The case study you are looking for does not exist.</p>
-          <Link to="/" className="text-primary-500 hover:text-primary-600 font-medium inline-flex items-center gap-2">
-            <ArrowLeft size={20} /> Back to Home
-          </Link>
-        </div>
-      </div>
-    );
-  }
+  if (!project) return null;
 
   return (
-    <div className="min-h-screen bg-white dark:bg-darkBg pb-24">
-      {/* Hero Header */}
-      <div className="relative h-[60vh] min-h-[400px] w-full bg-gray-900 overflow-hidden">
-        <div className="absolute inset-0">
-          <img src={project.heroImage} alt={project.title} className="w-full h-full object-cover opacity-40" />
-          <div className="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/60 to-transparent"></div>
-        </div>
-        
-        <div className="absolute inset-0 flex items-center">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full pt-20">
-            <Link to="/#projects" className="inline-flex items-center gap-2 text-gray-300 hover:text-white transition-colors mb-8 font-medium">
-              <ArrowLeft size={20} /> Back to Projects
-            </Link>
+    <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6 bg-gray-900/80 backdrop-blur-sm" onClick={onClose}>
+      <motion.div 
+        initial={{ opacity: 0, y: 50, scale: 0.95 }}
+        animate={{ opacity: 1, y: 0, scale: 1 }}
+        exit={{ opacity: 0, y: 20, scale: 0.95 }}
+        transition={{ duration: 0.3 }}
+        className="relative w-full max-w-6xl max-h-[90vh] overflow-y-auto bg-white dark:bg-darkBg rounded-3xl shadow-2xl"
+        onClick={(e) => e.stopPropagation()}
+      >
+        <button 
+          onClick={onClose}
+          className="absolute top-6 right-6 z-50 p-3 bg-black/30 hover:bg-black/50 text-white rounded-full backdrop-blur-md transition-colors"
+        >
+          <X size={24} />
+        </button>
+
+        {/* Hero Header */}
+        <div className="relative h-[40vh] min-h-[300px] w-full bg-gray-900 overflow-hidden rounded-t-3xl">
+          <div className="absolute inset-0">
+            <img src={project.heroImage} alt={project.title} className="w-full h-full object-cover opacity-40" />
+            <div className="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/60 to-transparent"></div>
+          </div>
+          
+          <div className="absolute inset-0 flex items-center">
+            <div className="max-w-5xl mx-auto px-8 w-full pt-10">
             
             <motion.h1 
               initial={{ opacity: 0, y: 20 }}
@@ -140,11 +165,10 @@ export default function CaseStudy() {
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-16 relative z-10">
-        <div className="bg-white dark:bg-darkCard rounded-3xl shadow-xl p-8 md:p-12 border border-gray-100 dark:border-slate-800">
+        <div className="p-8 md:p-12 relative z-10">
           
           {/* Quick Info Bar */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 pb-12 border-b border-gray-100 dark:border-slate-800">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 pb-12 border-b border-gray-100 dark:border-slate-800">
             <div>
               <h4 className="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-2">My Role</h4>
               <p className="text-gray-900 dark:text-white font-medium">{project.role}</p>
@@ -152,14 +176,6 @@ export default function CaseStudy() {
             <div>
               <h4 className="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-2">Timeline</h4>
               <p className="text-gray-900 dark:text-white font-medium">{project.timeline}</p>
-            </div>
-            <div className="flex gap-4 items-end">
-              <a href={project.liveUrl} target="_blank" rel="noreferrer" className="flex items-center gap-2 px-6 py-3 rounded-xl bg-primary-500 hover:bg-primary-600 text-white font-medium transition-colors">
-                <ExternalLink size={18} /> Live Site
-              </a>
-              <a href={project.githubUrl} target="_blank" rel="noreferrer" className="flex items-center gap-2 px-6 py-3 rounded-xl bg-gray-100 dark:bg-slate-800 text-gray-900 dark:text-white hover:bg-gray-200 dark:hover:bg-slate-700 transition-colors font-medium">
-                <FaGithub size={18} /> Code
-              </a>
             </div>
           </div>
 
@@ -235,7 +251,7 @@ export default function CaseStudy() {
 
           </div>
         </div>
-      </div>
+      </motion.div>
     </div>
   );
 }

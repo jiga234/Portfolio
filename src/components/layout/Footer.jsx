@@ -1,6 +1,5 @@
 import React from 'react';
-import { Mail } from 'lucide-react';
-import { FaGithub, FaLinkedin, FaTwitter } from 'react-icons/fa';
+import { FaGithub, FaLinkedin } from 'react-icons/fa';
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -19,17 +18,11 @@ export default function Footer() {
           </div>
 
           <div className="flex gap-4">
-            <a href="https://github.com" target="_blank" rel="noreferrer" className="p-2 rounded-full bg-gray-200 dark:bg-slate-800 text-gray-600 dark:text-gray-300 hover:text-primary-500 dark:hover:text-primary-400 hover:bg-gray-300 dark:hover:bg-slate-700 transition-all">
+            <a href="https://github.com/" target="_blank" rel="noreferrer" className="p-2 rounded-full bg-gray-200 dark:bg-slate-800 text-gray-600 dark:text-gray-300 hover:text-primary-500 dark:hover:text-primary-400 hover:bg-gray-300 dark:hover:bg-slate-700 transition-all">
               <FaGithub size={20} />
             </a>
-            <a href="https://linkedin.com" target="_blank" rel="noreferrer" className="p-2 rounded-full bg-gray-200 dark:bg-slate-800 text-gray-600 dark:text-gray-300 hover:text-primary-500 dark:hover:text-primary-400 hover:bg-gray-300 dark:hover:bg-slate-700 transition-all">
+            <a href="https://www.linkedin.com/in/jigar-prajapati-41795b370?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank" rel="noreferrer" className="p-2 rounded-full bg-gray-200 dark:bg-slate-800 text-gray-600 dark:text-gray-300 hover:text-primary-500 dark:hover:text-primary-400 hover:bg-gray-300 dark:hover:bg-slate-700 transition-all">
               <FaLinkedin size={20} />
-            </a>
-            <a href="https://twitter.com" target="_blank" rel="noreferrer" className="p-2 rounded-full bg-gray-200 dark:bg-slate-800 text-gray-600 dark:text-gray-300 hover:text-primary-500 dark:hover:text-primary-400 hover:bg-gray-300 dark:hover:bg-slate-700 transition-all">
-              <FaTwitter size={20} />
-            </a>
-            <a href="mailto:hello@example.com" className="p-2 rounded-full bg-gray-200 dark:bg-slate-800 text-gray-600 dark:text-gray-300 hover:text-primary-500 dark:hover:text-primary-400 hover:bg-gray-300 dark:hover:bg-slate-700 transition-all">
-              <Mail size={20} />
             </a>
           </div>
         </div>

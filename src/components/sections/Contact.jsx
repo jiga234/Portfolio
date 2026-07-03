@@ -10,23 +10,31 @@ export default function Contact() {
     event.preventDefault();
     setResult("Sending....");
     const formData = new FormData(event.target);
+    const object = Object.fromEntries(formData);
+    const json = JSON.stringify(object);
 
-    // Provide your Web3Forms Access Key here
-    formData.append("access_key", "YOUR_ACCESS_KEY_HERE");
+    try {
+      const response = await fetch("https://formsubmit.co/ajax/jigarprajapati2577@gmail.com", {
+        method: "POST",
+        headers: { 
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: json
+      });
 
-    const response = await fetch("https://api.web3forms.com/submit", {
-      method: "POST",
-      body: formData
-    });
+      const data = await response.json();
 
-    const data = await response.json();
-
-    if (data.success) {
-      setResult("Message sent successfully!");
-      event.target.reset();
-    } else {
-      console.log("Error", data);
-      setResult(data.message);
+      if (response.ok && data.success === "true") {
+        setResult("Message sent successfully!");
+        event.target.reset();
+      } else {
+        console.log("Error", data);
+        setResult(data.message || "Failed to send message. Please try again.");
+      }
+    } catch (error) {
+      console.log("Error", error);
+      setResult("An error occurred. Please try again later.");
     }
   };
 
@@ -61,14 +69,14 @@ export default function Contact() {
                 <Mail className="mt-1" />
                 <div>
                   <h4 className="font-semibold text-primary-100">Email</h4>
-                  <p>hello@example.com</p>
+                  <p>jigarprajapati2577@gmail.com</p>
                 </div>
               </div>
               <div className="flex items-start gap-4">
                 <Phone className="mt-1" />
                 <div>
                   <h4 className="font-semibold text-primary-100">Phone</h4>
-                  <p>+1 (555) 123-4567</p>
+                  <p>+91 9909012419</p>
                 </div>
               </div>
               <div className="flex items-start gap-4">
@@ -79,10 +87,10 @@ export default function Contact() {
                 </div>
               </div>
               <div className="flex items-center gap-4 pt-4 border-t border-primary-400/30">
-                <a href="https://github.com" target="_blank" rel="noreferrer" className="flex items-center gap-2 text-white hover:text-primary-200 transition-colors">
+                <a href="https://github.com/" target="_blank" rel="noreferrer" className="flex items-center gap-2 text-white hover:text-primary-200 transition-colors">
                   <FaGithub size={24} /> <span className="font-medium">GitHub</span>
                 </a>
-                <a href="https://linkedin.com" target="_blank" rel="noreferrer" className="flex items-center gap-2 text-white hover:text-primary-200 transition-colors ml-4">
+                <a href="https://www.linkedin.com/in/jigar-prajapati-41795b370?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank" rel="noreferrer" className="flex items-center gap-2 text-white hover:text-primary-200 transition-colors ml-4">
                   <FaLinkedin size={24} /> <span className="font-medium">LinkedIn</span>
                 </a>
               </div>

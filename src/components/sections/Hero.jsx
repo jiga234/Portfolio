@@ -29,29 +29,25 @@ export default function Hero() {
           </motion.div>
 
 
-          <motion.h1 
+          <motion.div 
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.1 }}
               className="mb-4 leading-tight"
             >
-              {/* <span className="block text-lg md:text-xl text-gray-500 dark:text-gray-400 font-medium mb-2 pb-1 pl-6">
-                Hi, I'm
-              </span> */}
-
-               <motion.h3
+               <motion.span
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: 0.15 }}
-                  className="text-2xl md:text-3xl lg:text-4xl font-bold text-gray-700 dark:text-gray-300 mb-6 pl-1"
+                  className="block text-2xl md:text-3xl lg:text-4xl font-bold text-gray-700 dark:text-gray-300 mb-6 pl-1"
                 >
                   Hi, I'm
-              </motion.h3>
+              </motion.span>
 
-              <span className="block text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-primary-500 to-purple-500 pb-2 pl-1">
+              <h1 className="block text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-primary-500 to-purple-500 pb-2 pl-1">
                 Jigar Prajapati
-              </span>
-          </motion.h1>
+              </h1>
+          </motion.div>
           
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
@@ -68,7 +64,7 @@ export default function Hero() {
             transition={{ duration: 0.5, delay: 0.2 }}
             className="text-lg md:text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto md:mx-0 mb-10 leading-relaxed"
           >
-            I build exceptional and accessible digital experiences for the web. Let's turn your ideas into reality.
+            I build modern, scalable, and high-performance web applications using MongoDB, Express.js, React.js, and Node.js. Passionate about creating intuitive user experiences and delivering clean, efficient, and maintainable solutions.
           </motion.p>
 
           <motion.div 
@@ -84,7 +80,10 @@ export default function Hero() {
               View My Work <ArrowRight size={20} />
             </a>
             <a 
-              href="#contact"
+              href="/Portfolio/Jigar_resume.pdf"
+              download="Jigar_resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
               className="flex items-center gap-2 px-8 py-4 rounded-full bg-white dark:bg-slate-800 text-gray-900 dark:text-white font-medium border border-gray-200 dark:border-slate-700 hover:border-primary-500 dark:hover:border-primary-500 transition-all"
             >
               Download Resume <Download size={20} />
@@ -102,7 +101,7 @@ export default function Hero() {
           <div className="relative w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96">
             <div className="absolute inset-0 bg-gradient-to-tr from-primary-500 to-purple-500 rounded-[2rem] md:rounded-[3rem] rotate-6 opacity-30 dark:opacity-20 blur-lg transition-transform duration-500 hover:rotate-12"></div>
             <img 
-              src="public/jigar.png" 
+              src="/Portfolio/photo.jpeg" 
               alt="Jigar Prajapati" 
               className="relative w-full h-full object-cover rounded-[2rem] md:rounded-[3rem] border-2 border-white/20 dark:border-white/10 shadow-2xl transition-transform duration-500 hover:-translate-y-2"
             />

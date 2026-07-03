@@ -21,10 +21,10 @@ export default function Navbar() {
   }, []);
 
   const navLinks = [
+    { name: 'Home', href: isHome ? '#hero' : '/#hero' },
     { name: 'About', href: isHome ? '#about' : '/#about' },
     { name: 'Skills', href: isHome ? '#skills' : '/#skills' },
     { name: 'Projects', href: isHome ? '#projects' : '/#projects' },
-    { name: 'Blog', href: '/blog' },
     { name: 'Contact', href: isHome ? '#contact' : '/#contact' },
   ];
 

@@ -27,14 +27,16 @@ export default function Blog() {
   ];
 
   return (
-    <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <section id="blog" className="py-24 bg-white dark:bg-darkCard">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
       >
-        <h1 className="text-4xl font-bold mb-4">Blog</h1>
-        <p className="text-xl text-gray-600 dark:text-gray-400 mb-12">
+        <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4 text-center">Blog</h2>
+        <div className="w-20 h-1 bg-primary-500 mx-auto rounded-full mb-8"></div>
+        <p className="text-xl text-gray-600 dark:text-gray-400 mb-12 text-center">
           Thoughts, learnings, and tutorials on web development.
         </p>
 
@@ -67,6 +69,7 @@ export default function Blog() {
           ))}
         </div>
       </motion.div>
-    </div>
+      </div>
+    </section>
   );
 }

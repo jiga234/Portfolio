@@ -3,13 +3,12 @@ import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-route
 import { ThemeProvider } from './context/ThemeContext';
 import Layout from './components/layout/Layout';
 import Home from './pages/Home';
-import Blog from './pages/Blog';
-import CaseStudy from './pages/CaseStudy';
+
 import Loader from './components/layout/Loader';
 
 function ScrollToHashElement() {
   const { hash } = useLocation();
-  
+
   useEffect(() => {
     if (hash) {
       const element = document.getElementById(hash.replace('#', ''));
@@ -22,7 +21,6 @@ function ScrollToHashElement() {
       window.scrollTo(0, 0);
     }
   }, [hash]);
-
   return null;
 }
 
@@ -32,13 +30,12 @@ function App() {
   return (
     <ThemeProvider>
       <Loader isLoading={isLoading} onComplete={() => setIsLoading(false)} />
-      <Router>
+      <Router basename="/Portfolio/">
         <ScrollToHashElement />
         <Layout>
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/blog" element={<Blog />} />
-            <Route path="/case-study/:id" element={<CaseStudy />} />
+
           </Routes>
         </Layout>
       </Router>
