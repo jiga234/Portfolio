@@ -80,10 +80,10 @@ export default function Contact() {
                 </div>
               </div>
               <div className="flex items-start gap-4">
-                <MapPin className="mt-1" />
+                <MapPin className="mt-1"/>
                 <div>
                   <h4 className="font-semibold text-primary-100">Location</h4>
-                  <p>San Francisco, CA<br />Available for remote work worldwide</p>
+                  <p>Katargam,Surat,Gujarat</p>
                 </div>
               </div>
               <div className="flex items-center gap-4 pt-4 border-t border-primary-400/30">

@@ -3,14 +3,14 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://jiga234.github.io/Portfolio",
+  "homepage": "https://github.com/jiga234/Portfolio",
   "scripts": {
-      "dev": "vite",
-      "build": "vite build",
-      "lint": "eslint .",
-      "preview": "vite preview",
-      "predeploy": "npm run build",
-      "deploy": "gh-pages -d dist"
+    "dev": "vite",
+    "build": "vite build",
+    "lint": "eslint .",
+    "preview": "vite preview",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "framer-motion": "^12.38.0",
